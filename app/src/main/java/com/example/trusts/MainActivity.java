@@ -1,51 +1,51 @@
 package com.example.trusts;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-
+    CardView cv_keluar, cv_masuk, laporan, profile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ListView listView;
-        SimpleAdapter adapter;
-        HashMap<String, String> map;
-        ArrayList<HashMap<String, String>> mylist;
-        String[] jdl; //deklarasi judul iem
-        String[] ktr; //deklarasi keterangan item
-        String[] img; //deklarasi image item
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mobil_keluar);
+        setContentView(R.layout.activity_main);
 
-        listView = (ListView)findViewById(R.id.list_view);
-        jdl = new String[] {
-                "Sampokong","Waterpark","Mangkang","Wonderia","Gereja Blenduk"
-        };
-        ktr = new String[]{
-                "Tempat Wisata","Tempat Wisata","Tempat Wisata","Tempat Wisata","Tempat Wisata","Tempat Wisata" //jumlahnya harus sama dengan jumlah judul
-        };
-        img = new String[]{
-                Integer.toString(R.drawable.sampokong),Integer.toString(R.drawable.waterpark),Integer.toString(R.drawable.mangkang),
-                Integer.toString(R.drawable.wonderia),Integer.toString(R.drawable.gerejablenduk)
-        };
-        mylist = new ArrayList<HashMap<String, String>>();
+        cv_keluar = (CardView)findViewById(R.id.cv_keluar);
+        cv_masuk = (CardView)findViewById(R.id.cv_masuk);
+        laporan = (CardView)findViewById(R.id.laporan);
+        profile = (CardView)findViewById(R.id.profile);
 
-        for (int i=0; i<jdl.length; i++){
-            map = new HashMap<String, String>();
-            map.put("judul", jdl[i]);
-            map.put("Keterangan", ktr[i]);
-            map.put("Gambar", img[i]);
-            mylist.add(map);
-        }
-        adapter = new SimpleAdapter(this, mylist, R.layout.item_list,
-                new String[]{"judul", "Keterangan", "Gambar"}, new int[]{R.id.txt_judul,(R.id.txt_keterangan),(R.id.img)});
-        listView.setAdapter(adapter);
+        cv_keluar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MobilKeluarActivity.class));
+            }
+        });
+
+        cv_masuk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MobilKeluarActivity.class));
+            }
+        });
+
+        laporan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MobilKeluarActivity.class));
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MobilKeluarActivity.class));
+            }
+        });
     }
 }
