@@ -26,11 +26,11 @@ public class ResponseProfile {
         this.message = message;
     }
 
-    public Profile getGasType() {
+    public Profile getData() {
         return data;
     }
 
-    public void setGasType(Profile data) {
+    public void setData(Profile data) {
         this.data = data;
     }
 

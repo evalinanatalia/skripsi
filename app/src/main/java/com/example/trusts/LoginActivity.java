@@ -15,6 +15,7 @@ import com.example.trusts.model.RequestLogin;
 import com.example.trusts.model.ResponseProfile;
 import com.example.trusts.network.NetworkService;
 import com.example.trusts.retrofit.RetrofitClient;
+import com.example.trusts.support.Preferences;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,11 +26,16 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText etUsername;
     EditText etPassword;
+    Preferences mPreference;
+    ResponseProfile responseProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mPreference = new Preferences(this);
+
         btnLogin = (Button) findViewById(R.id.btn_login);
         etUsername = (EditText) findViewById(R.id.et_username);
         etPassword = (EditText) findViewById(R.id.et_password);
@@ -48,6 +54,9 @@ public class LoginActivity extends AppCompatActivity {
                 call.enqueue(new Callback<ResponseProfile>() {
                     @Override
                     public void onResponse(Call<ResponseProfile> call, Response<ResponseProfile> response) {
+                        responseProfile = response.body();
+                        //Save User Data
+                        mPreference.saveProfile(responseProfile.getData());
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
