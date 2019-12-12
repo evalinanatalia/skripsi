@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                         responseProfile = response.body();
                         //Save User Data
                         mPreference.saveProfile(responseProfile.getData());
+                        mPreference.setLogin("login");
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();

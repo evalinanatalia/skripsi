@@ -144,5 +144,16 @@
 
     </LinearLayout>
     </LinearLayout>
-
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorRed"
+        android:textAllCaps="false"
+        fontPath="fonts/SemiBold.otf"
+        android:textSize="17sp"
+        android:textColor="@color/colorWhite"
+        android:text="Logut"/>
 </RelativeLayout>

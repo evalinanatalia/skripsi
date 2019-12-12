@@ -1,7 +1,9 @@
 package com.example.trusts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import com.example.trusts.support.Preferences;
 
 public class ProfileActivity extends AppCompatActivity {
     EditText nama, alamat, jenis_kelamin;
+    Button btn_logout;
     Preferences mPreferences;
     Profile profile;
 
@@ -27,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
             nama = (EditText) findViewById(R.id.et_name);
             alamat = (EditText)findViewById(R.id.et_alamat);
             jenis_kelamin = (EditText)findViewById(R.id.jenis_kelamin);
+            btn_logout = (Button)findViewById(R.id.btn_logout);
 
             profile = mPreferences.getProfile();
 
@@ -35,6 +39,13 @@ public class ProfileActivity extends AppCompatActivity {
                 alamat.setText(profile.getAlamat());
                 jenis_kelamin.setText(profile.getJenis_kelamin());
             }
+            btn_logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
+                    mPreferences.setLogin("");
+                }
+            });
         }
 
         public void initToolbar(int toolbarId) {

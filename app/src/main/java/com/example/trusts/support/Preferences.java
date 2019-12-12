@@ -23,6 +23,21 @@ public class Preferences {
         mSharedPreferences = mContext.getSharedPreferences("pede_emoney_preference", 0);
     }
 
+    public void setLogin(String login) {
+        SharedPreferences.Editor e = mSharedPreferences.edit();
+        e.putString(Preferences.IS_USER_LOGIN, login);
+        e.apply();
+    }
+
+    public boolean isLogin(){
+        String userDetailJSON = mSharedPreferences.getString(Preferences.IS_USER_LOGIN, "");
+        if(userDetailJSON.equals("")){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
     public void saveProfile(Profile userDetail) {
         SharedPreferences.Editor e = mSharedPreferences.edit();
         e.putString(Preferences.PROFILE, new Gson().toJson(userDetail));
