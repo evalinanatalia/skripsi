@@ -3,6 +3,8 @@ package com.example.trusts.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Mobil {
+    @SerializedName("car_no")
+    private String car_no;
     @SerializedName("no_plat")
     private String no_plat;
     @SerializedName("nama_pemilik")
@@ -31,6 +33,14 @@ public class Mobil {
     private String status_mobil;
     @SerializedName("status")
     private String status;
+
+    public String getCar_no() {
+        return car_no;
+    }
+
+    public void setCar_no(String car_no) {
+        this.car_no = car_no;
+    }
 
     public String getNo_plat() {
         return no_plat;

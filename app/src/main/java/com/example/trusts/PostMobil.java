@@ -76,11 +76,18 @@ public class PostMobil extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int nomor=1;
+                for(Mobil mobil : responseMobil.getData()){
+                    if(mobil.getNo_plat().equals(spinner.getSelectedItem().toString())){
+                        nomor=Integer.valueOf(mobil.getCar_no());
+                    }
+                }
+
                 MobilKeluar mobilKeluar = new MobilKeluar();
                 mobilKeluar.setOut_dt(tanggal.getText().toString());
                 mobilKeluar.setKm_awal(Integer.valueOf(km_awal.getText().toString()));
                 mobilKeluar.setTujuan(tujuan.getText().toString());
-                mobilKeluar.setCar_no(Integer.valueOf(spinner.getSelectedItem().toString()));
+                mobilKeluar.setCar_no(nomor);
                 mobilKeluar.setUser_id(Integer.valueOf(mPreferences.getProfile().getUser_id()));
                 mobilKeluar.setStatus("Request");
                 mobilKeluar.setProgress("In Progress");
