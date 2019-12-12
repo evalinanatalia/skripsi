@@ -1,5 +1,6 @@
 package com.example.trusts.network;
 
+import com.example.trusts.model.Mobil;
 import com.example.trusts.model.MobilKeluar;
 import com.example.trusts.model.RequestLogin;
 import com.example.trusts.model.ResponseData;
@@ -27,6 +28,9 @@ public interface NetworkService {
     @POST("mobilkeluar")
     Call<ResponseData> postMobil(
             @Body MobilKeluar credentials);
+
+    @GET("mobilkeluar/{id}")
+    Call<Mobil> getMobilById();
 
 //    @GET("polls.apiblueprint.org/v1/user/balance")
 //    Call<Balance> getBalance(

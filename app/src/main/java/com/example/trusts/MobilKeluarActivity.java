@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.trusts.adapter.MobilAdapter;
+import com.example.trusts.model.Mobil;
 import com.example.trusts.model.MobilKeluar;
+import com.example.trusts.model.ResponseMobil;
 import com.example.trusts.model.ResponseMobilKeluar;
 import com.example.trusts.model.ResponseProfile;
 import com.example.trusts.network.NetworkService;
@@ -32,9 +34,11 @@ public class MobilKeluarActivity extends AppCompatActivity {
     HashMap<String, String> map;
     ArrayList<HashMap<String, String>> mylist;
     List<MobilKeluar> keluarList;
+    Mobil mobil;
     String[] jdl; //deklarasi judul iem
     String[] ktr; //deklarasi keterangan item
     String[] img; //deklarasi image item
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

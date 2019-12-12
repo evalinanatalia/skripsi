@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.trusts.R;
+import com.example.trusts.model.Mobil;
 import com.example.trusts.model.MobilKeluar;
 
 import java.util.List;
@@ -34,22 +35,27 @@ public long getItemId(int position) {
         return position;
         }
 public View getView(int position, View v, ViewGroup vg) {
+        Mobil mobil;
         ViewHolder holder;
         if (v == null) {
         v = layoutInflater.inflate(R.layout.item_list, null);
         holder = new ViewHolder();
         holder.uName = (TextView) v.findViewById(R.id.txt_judul);
         holder.uDesignation = (TextView) v.findViewById(R.id.txt_keterangan);
+        holder.uKm = (TextView) v.findViewById(R.id.txt_km);
         v.setTag(holder);
         } else {
         holder = (ViewHolder) v.getTag();
         }
         holder.uName.setText(""+listData.get(position).getCar_no());
         holder.uDesignation.setText(listData.get(position).getTujuan());
+        holder.uKm.setText(""+listData.get(position).getKm_awal());
+
         return v;
         }
 static class ViewHolder {
     TextView uName;
     TextView uDesignation;
+    TextView uKm;
 }
 }
