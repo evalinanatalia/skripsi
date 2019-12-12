@@ -8,13 +8,13 @@ public class MobilKeluar {
     @SerializedName("out_dt")
     private String out_dt;
     @SerializedName("km_awal")
-    private String km_awal;
+    private Integer km_awal;
     @SerializedName("tujuan")
     private String tujuan;
     @SerializedName("car_no")
-    private String car_no;
+    private Integer car_no;
     @SerializedName("user_id")
-    private String user_id;
+    private Integer user_id;
     @SerializedName("status")
     private String status;
     @SerializedName("progress")
@@ -36,11 +36,11 @@ public class MobilKeluar {
         this.out_dt = out_dt;
     }
 
-    public String getKm_awal() {
+    public Integer getKm_awal() {
         return km_awal;
     }
 
-    public void setKm_awal(String km_awal) {
+    public void setKm_awal(Integer km_awal) {
         this.km_awal = km_awal;
     }
 
@@ -52,19 +52,19 @@ public class MobilKeluar {
         this.tujuan = tujuan;
     }
 
-    public String getCar_no() {
+    public Integer getCar_no() {
         return car_no;
     }
 
-    public void setCar_no(String car_no) {
+    public void setCar_no(Integer car_no) {
         this.car_no = car_no;
     }
 
-    public String getUser_id() {
+    public Integer getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(Integer user_id) {
         this.user_id = user_id;
     }
 

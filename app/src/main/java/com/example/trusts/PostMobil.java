@@ -38,7 +38,7 @@ public class PostMobil extends AppCompatActivity {
         tanggal = (EditText) findViewById(R.id.tgl_out);
         km_awal = (EditText)findViewById(R.id.km_awal);
         tujuan = (EditText)findViewById(R.id.tujuan);
-        no_mobil = (EditText)findViewById(R.id.jenis_kelamin);
+        no_mobil = (EditText)findViewById(R.id.car_no);
         submit = (Button) findViewById(R.id.btn_submit);
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -46,11 +46,12 @@ public class PostMobil extends AppCompatActivity {
             public void onClick(View view) {
                 MobilKeluar mobilKeluar = new MobilKeluar();
                 mobilKeluar.setOut_dt(tanggal.getText().toString());
-                mobilKeluar.setKm_awal(km_awal.getText().toString());
+                mobilKeluar.setKm_awal(Integer.valueOf(km_awal.getText().toString()));
                 mobilKeluar.setTujuan(tujuan.getText().toString());
-                mobilKeluar.setCar_no(no_mobil.getText().toString());
+                mobilKeluar.setCar_no(Integer.valueOf(no_mobil.getText().toString()));
+                mobilKeluar.setUser_id(Integer.valueOf(mPreferences.getProfile().getUser_id()));
                 mobilKeluar.setStatus("Request");
-                mobilKeluar.setCar_no("In Progress");
+                mobilKeluar.setProgress("In Progress");
 
                 NetworkService service = RetrofitClient.getClient().create(NetworkService.class);
                 Call<ResponseData> call = service.postMobil(mobilKeluar);

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         cv_masuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MobilKeluarActivity.class));
+                startActivity(new Intent(MainActivity.this, PostMobil.class));
             }
         });
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MobilKeluarActivity.class));
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
             }
         });
     }

@@ -3,6 +3,7 @@ package com.example.trusts.network;
 import com.example.trusts.model.MobilKeluar;
 import com.example.trusts.model.RequestLogin;
 import com.example.trusts.model.ResponseData;
+import com.example.trusts.model.ResponseMobilKeluar;
 import com.example.trusts.model.ResponseProfile;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface NetworkService {
             @Body RequestLogin request);
 
     @GET("mobilkeluar")
-    Call<List<MobilKeluar>> getMobil();
+    Call<ResponseMobilKeluar> getMobil();
 
     @POST("mobilkeluar")
     Call<ResponseData> postMobil(
