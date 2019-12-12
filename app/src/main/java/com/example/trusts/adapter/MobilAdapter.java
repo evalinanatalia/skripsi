@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.trusts.R;
-import com.example.trusts.model.Mobil;
 import com.example.trusts.model.MobilKeluar;
 
 import java.util.List;
@@ -35,7 +34,6 @@ public long getItemId(int position) {
         return position;
         }
 public View getView(int position, View v, ViewGroup vg) {
-        Mobil mobil;
         ViewHolder holder;
         if (v == null) {
         v = layoutInflater.inflate(R.layout.item_list, null);
@@ -43,13 +41,15 @@ public View getView(int position, View v, ViewGroup vg) {
         holder.uName = (TextView) v.findViewById(R.id.txt_judul);
         holder.uDesignation = (TextView) v.findViewById(R.id.txt_keterangan);
         holder.uKm = (TextView) v.findViewById(R.id.txt_km);
+        holder.noPlat = (TextView) v.findViewById(R.id.txt_mobil);
         v.setTag(holder);
         } else {
         holder = (ViewHolder) v.getTag();
         }
-        holder.uName.setText(""+listData.get(position).getCar_no());
+        holder.uName.setText(""+listData.get(position).getOut_dt());
         holder.uDesignation.setText(listData.get(position).getTujuan());
         holder.uKm.setText(""+listData.get(position).getKm_awal());
+        holder.noPlat.setText(listData.get(position).getNo_plat());
 
         return v;
         }
@@ -57,5 +57,6 @@ static class ViewHolder {
     TextView uName;
     TextView uDesignation;
     TextView uKm;
+    TextView noPlat;
 }
 }
