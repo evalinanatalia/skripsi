@@ -20,7 +20,7 @@ public interface NetworkService {
     Call<ResponseProfile> postLogin(
             @Body RequestLogin request);
 
-    @POST("mobilkeluar")
+    @GET("mobilkeluar")
     Call<List<MobilKeluar>> getMobil();
 
     @POST("mobilkeluar")

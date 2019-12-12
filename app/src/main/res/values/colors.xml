@@ -7,4 +7,7 @@
     <color name="soft_grey">#dddddd</color>
     <color name="medium_grey">#cccccc</color>
     <color name="grey">#999999</color>
+    <color name="cross_toolbar_text_color">#0496f4</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="colorRed">#df3c50</color>
 </resources>
