@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ import retrofit2.Response;
 
 public class MobilKeluarActivity extends AppCompatActivity {
     ListView listView;
+    Button btn_add;
     MobilAdapter adapter;
     HashMap<String, String> map;
     ArrayList<HashMap<String, String>> mylist;
@@ -46,6 +48,7 @@ public class MobilKeluarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mobil_keluar);
         initToolbar(R.id.toolbar);
         listView = (ListView)findViewById(R.id.list_view);
+        btn_add = (Button) findViewById(R.id.btn_tambah);
         mylist = new ArrayList<HashMap<String, String>>();
 
         NetworkService service = RetrofitClient.getClient().create(NetworkService.class);
@@ -68,6 +71,12 @@ public class MobilKeluarActivity extends AppCompatActivity {
             }
         });
 
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MobilKeluarActivity.this, PostMobil.class));
+            }
+        });
 
     }
     public void initToolbar(int toolbarId) {

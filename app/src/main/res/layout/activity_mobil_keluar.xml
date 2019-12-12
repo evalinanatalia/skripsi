@@ -44,6 +44,17 @@
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
+        <Button
+            android:id="@+id/btn_tambah"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorRed"
+            android:textAllCaps="false"
+            android:layout_margin="10dp"
+            android:textSize="17sp"
+            android:textColor="@color/colorWhite"
+            android:text="Kirim"/>
     <LinearLayout
         android:id="@+id/form_layout"
         android:layout_width="match_parent"
