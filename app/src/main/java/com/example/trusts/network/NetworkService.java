@@ -1,6 +1,8 @@
 package com.example.trusts.network;
 
+import com.example.trusts.model.MobilKeluar;
 import com.example.trusts.model.RequestLogin;
+import com.example.trusts.model.ResponseData;
 import com.example.trusts.model.ResponseProfile;
 
 import java.util.List;
@@ -18,10 +20,12 @@ public interface NetworkService {
     Call<ResponseProfile> postLogin(
             @Body RequestLogin request);
 
-//    @POST("polls.apiblueprint.org/v1/user/profile")
-//    Call<Profile> postProfile(
-//            @Header("Authorization") String credentials,
-//            @Header("Content-Type") String type);
+    @POST("mobilkeluar")
+    Call<List<MobilKeluar>> getMobil();
+
+    @POST("mobilkeluar")
+    Call<ResponseData> postMobil(
+            @Body MobilKeluar credentials);
 
 //    @GET("polls.apiblueprint.org/v1/user/balance")
 //    Call<Balance> getBalance(
