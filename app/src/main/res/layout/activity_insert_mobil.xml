@@ -109,19 +109,13 @@
             android:layout_marginBottom="5dp"
             android:background="@color/colorAccent"/>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <Spinner
+            android:id="@+id/spin_plat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="32dp">
 
-            <EditText
-                android:id="@+id/car_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@color/transparent"
-                android:hint="No Mobil"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+        </Spinner>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

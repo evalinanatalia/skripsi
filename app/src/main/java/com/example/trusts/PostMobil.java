@@ -3,31 +3,39 @@ package com.example.trusts;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.trusts.model.Mobil;
 import com.example.trusts.model.MobilKeluar;
 import com.example.trusts.model.Profile;
 import com.example.trusts.model.ResponseData;
+import com.example.trusts.model.ResponseMobil;
 import com.example.trusts.model.ResponseProfile;
 import com.example.trusts.network.NetworkService;
 import com.example.trusts.retrofit.RetrofitClient;
 import com.example.trusts.support.Preferences;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PostMobil extends AppCompatActivity {
-    EditText tanggal, km_awal, tujuan, no_mobil;
+    EditText tanggal, km_awal, tujuan;
+    Spinner spinner;
     Button submit;
     Preferences mPreferences;
     Profile profile;
-
+    ResponseMobil responseMobil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +43,35 @@ public class PostMobil extends AppCompatActivity {
         initToolbar(R.id.toolbar);
         mPreferences = new Preferences(this);
 
+        NetworkService service = RetrofitClient.getClient().create(NetworkService.class);
+        Call<ResponseMobil> call = service.getMobilPlat();
+
+        call.enqueue(new Callback<ResponseMobil>() {
+            @Override
+            public void onResponse(Call<ResponseMobil> call, Response<ResponseMobil> response) {
+                //Save User Data
+                responseMobil = response.body();
+                List<String> list = new ArrayList<String>();
+                for(Mobil mobil : responseMobil.getData()){
+                    list.add(mobil.getNo_plat());
+                }
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(PostMobil.this,
+                        android.R.layout.simple_spinner_item, list);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(dataAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseMobil> call, Throwable t) {
+                Toast.makeText(PostMobil.this, "gagal",Toast.LENGTH_LONG).show();
+            }
+        });
+
         tanggal = (EditText) findViewById(R.id.tgl_out);
         km_awal = (EditText)findViewById(R.id.km_awal);
         tujuan = (EditText)findViewById(R.id.tujuan);
-        no_mobil = (EditText)findViewById(R.id.car_no);
         submit = (Button) findViewById(R.id.btn_submit);
+        spinner = (Spinner) findViewById(R.id.spin_plat);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +80,7 @@ public class PostMobil extends AppCompatActivity {
                 mobilKeluar.setOut_dt(tanggal.getText().toString());
                 mobilKeluar.setKm_awal(Integer.valueOf(km_awal.getText().toString()));
                 mobilKeluar.setTujuan(tujuan.getText().toString());
-                mobilKeluar.setCar_no(Integer.valueOf(no_mobil.getText().toString()));
+                mobilKeluar.setCar_no(Integer.valueOf(spinner.getSelectedItem().toString()));
                 mobilKeluar.setUser_id(Integer.valueOf(mPreferences.getProfile().getUser_id()));
                 mobilKeluar.setStatus("Request");
                 mobilKeluar.setProgress("In Progress");

@@ -2,13 +2,15 @@ package com.example.trusts.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class ResponseMobil {
     @SerializedName("status")
     private String status;
     @SerializedName("message")
     private String message;
     @SerializedName("data")
-    private Mobil data;
+    private List<Mobil> data;
 
     public String getStatus() {
         return status;
@@ -26,11 +28,11 @@ public class ResponseMobil {
         this.message = message;
     }
 
-    public Mobil getData() {
+    public List<Mobil> getData() {
         return data;
     }
 
-    public void setData(Mobil data) {
+    public void setData(List<Mobil> data) {
         this.data = data;
     }
 }

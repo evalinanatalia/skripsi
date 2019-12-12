@@ -4,6 +4,7 @@ import com.example.trusts.model.Mobil;
 import com.example.trusts.model.MobilKeluar;
 import com.example.trusts.model.RequestLogin;
 import com.example.trusts.model.ResponseData;
+import com.example.trusts.model.ResponseMobil;
 import com.example.trusts.model.ResponseMobilKeluar;
 import com.example.trusts.model.ResponseProfile;
 
@@ -33,6 +34,9 @@ public interface NetworkService {
     @GET("mobilkeluar/{id}")
     Call<Mobil> getMobilById(
             @Path("id") int id);
+
+    @GET("kendaraan")
+    Call<ResponseMobil> getMobilPlat();
 
 
 //    @GET("polls.apiblueprint.org/v1/user/balance")
