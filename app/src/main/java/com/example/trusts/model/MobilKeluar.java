@@ -19,6 +19,8 @@ public class MobilKeluar {
     private String status;
     @SerializedName("progress")
     private String progress;
+    @SerializedName("no_plat")
+    private String no_plat;
 
     public String getOut_no() {
         return out_no;
@@ -82,5 +84,13 @@ public class MobilKeluar {
 
     public void setProgress(String progress) {
         this.progress = progress;
+    }
+
+    public String getNo_plat() {
+        return no_plat;
+    }
+
+    public void setNo_plat(String no_plat) {
+        this.no_plat = no_plat;
     }
 }
