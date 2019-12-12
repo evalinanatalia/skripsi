@@ -15,6 +15,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface NetworkService {
 
@@ -30,7 +31,9 @@ public interface NetworkService {
             @Body MobilKeluar credentials);
 
     @GET("mobilkeluar/{id}")
-    Call<Mobil> getMobilById();
+    Call<Mobil> getMobilById(
+            @Path("id") int id);
+
 
 //    @GET("polls.apiblueprint.org/v1/user/balance")
 //    Call<Balance> getBalance(
