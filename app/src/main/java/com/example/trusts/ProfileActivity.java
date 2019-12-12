@@ -42,8 +42,9 @@ public class ProfileActivity extends AppCompatActivity {
             btn_logout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
                     mPreferences.setLogin("");
+                    startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+
                 }
             });
         }
