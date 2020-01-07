@@ -1,11 +1,16 @@
 package com.example.trusts.network;
 
+import com.example.trusts.model.Laporan;
 import com.example.trusts.model.Mobil;
 import com.example.trusts.model.MobilKeluar;
+import com.example.trusts.model.MobilKembali;
 import com.example.trusts.model.RequestLogin;
 import com.example.trusts.model.ResponseData;
+import com.example.trusts.model.ResponseKartu;
+import com.example.trusts.model.ResponseLaporan;
 import com.example.trusts.model.ResponseMobil;
 import com.example.trusts.model.ResponseMobilKeluar;
+import com.example.trusts.model.ResponseMobilKembali;
 import com.example.trusts.model.ResponseProfile;
 
 import java.util.List;
@@ -37,6 +42,19 @@ public interface NetworkService {
 
     @GET("kendaraan")
     Call<ResponseMobil> getMobilPlat();
+
+    @GET("laporanmobil")
+    Call<ResponseLaporan> getLaporanMobil();
+
+    @GET("mobilkembali")
+    Call<ResponseMobilKembali> getMobilKembali();
+
+    @GET("kartuetoll")
+    Call<ResponseKartu> getKartu();
+
+    @POST("mobilkembali")
+    Call<ResponseData> postMobilKembali(
+            @Body MobilKembali credentials);
 
 
 //    @GET("polls.apiblueprint.org/v1/user/balance")

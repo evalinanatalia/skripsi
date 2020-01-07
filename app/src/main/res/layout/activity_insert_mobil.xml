@@ -2,8 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:ignore="MissingPrefix">
     <LinearLayout
@@ -15,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -23,26 +24,22 @@
             android:background="@color/colorPrimary"
             app:theme="@style/ToolBarStyle"
             app:popupTheme="@style/AppTheme.PopupOverlay">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="50dp"
-                android:text="Daftar Mobil Masuk"
+                android:text="Daftar Mobil Keluar"
                 android:gravity="center"
                 android:textColor="@color/colorWhite"
                 fontPath="fonts/SemiBold.otf"/>
-
             <FrameLayout
                 android:id="@+id/snackbar_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
             </FrameLayout>
-
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
+
     <LinearLayout
         android:id="@+id/form_layout"
         android:layout_width="match_parent"
@@ -50,19 +47,18 @@
         android:padding="20dp"
         android:animateLayoutChanges="true"
         android:orientation="vertical">
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/tgl_out"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/transparent"
-            android:hint="Tanggal Keluar"
-            android:inputType="text" />
+            <EditText
+                android:id="@+id/tv_dateresult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:inputType="none"
+                android:focusable="false"
+                android:editable="false"
+                android:hint="Tanggal"/>
         </com.google.android.material.textfield.TextInputLayout>
         <View
             android:layout_width="match_parent"
@@ -112,7 +108,8 @@
         <Spinner
             android:id="@+id/spin_plat"
             android:layout_width="match_parent"
-            android:layout_height="32dp">
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content">
 
         </Spinner>
 

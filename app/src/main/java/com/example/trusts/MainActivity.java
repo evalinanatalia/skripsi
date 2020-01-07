@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
         cv_masuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, PostMobil.class));
+                startActivity(new Intent(MainActivity.this, MobilKembaliActivity.class));
             }
         });
 
         laporan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MobilKeluarActivity.class));
+                startActivity(new Intent(MainActivity.this, LaporanActivity.class));
             }
         });
 

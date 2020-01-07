@@ -1,24 +1,22 @@
 package com.example.trusts;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.trusts.adapter.LaporanAdapter;
 import com.example.trusts.adapter.MobilAdapter;
+import com.example.trusts.model.Laporan;
 import com.example.trusts.model.Mobil;
 import com.example.trusts.model.MobilKeluar;
-import com.example.trusts.model.ResponseMobil;
+import com.example.trusts.model.ResponseLaporan;
 import com.example.trusts.model.ResponseMobilKeluar;
-import com.example.trusts.model.ResponseProfile;
 import com.example.trusts.network.NetworkService;
 import com.example.trusts.retrofit.RetrofitClient;
 
@@ -30,56 +28,52 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MobilKeluarActivity extends AppCompatActivity {
+public class LaporanActivity  extends AppCompatActivity {
     ListView listView;
     Button btn_add;
-    Button btn_gps;
-    MobilAdapter adapter;
+    LaporanAdapter adapter;
     HashMap<String, String> map;
     ArrayList<HashMap<String, String>> mylist;
-    List<MobilKeluar> keluarList;
-    Mobil mobil;
+    List<Laporan> laporanList;
     String[] jdl; //deklarasi judul iem
     String[] ktr; //deklarasi keterangan item
     String[] img; //deklarasi image item
-    int id;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mobil_keluar);
+        setContentView(R.layout.activity_laporan);
         initToolbar(R.id.toolbar);
         listView = (ListView)findViewById(R.id.list_view);
         btn_add = (Button) findViewById(R.id.btn_tambah);
         mylist = new ArrayList<HashMap<String, String>>();
 
         NetworkService service = RetrofitClient.getClient().create(NetworkService.class);
-        Call<ResponseMobilKeluar> call = service.getMobil();
+        Call<ResponseLaporan> call = service.getLaporanMobil();
 
-        call.enqueue(new Callback<ResponseMobilKeluar>() {
+        call.enqueue(new Callback<ResponseLaporan>() {
             @Override
-            public void onResponse(Call<ResponseMobilKeluar> call, Response<ResponseMobilKeluar> response) {
-                keluarList = response.body().getData();
+            public void onResponse(Call<ResponseLaporan> call, Response<ResponseLaporan> response) {
+                laporanList = response.body().getData();
                 //Save User Data
 
-                adapter = new MobilAdapter(MobilKeluarActivity.this, keluarList);
+                adapter = new LaporanAdapter(LaporanActivity.this, laporanList);
                 listView.setAdapter(adapter);
 
             }
 
             @Override
-            public void onFailure(Call<ResponseMobilKeluar> call, Throwable t) {
-                Toast.makeText(MobilKeluarActivity.this, "gagal",Toast.LENGTH_LONG).show();
+            public void onFailure(Call<ResponseLaporan> call, Throwable t) {
+                Toast.makeText(LaporanActivity.this, "gagal",Toast.LENGTH_LONG).show();
             }
         });
 
-        btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MobilKeluarActivity.this, PostMobil.class));
-            }
-        });
+//        btn_add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(LaporanActivity.this, PostMobil.class));
+//            }
+//        });
 
     }
     public void initToolbar(int toolbarId) {
